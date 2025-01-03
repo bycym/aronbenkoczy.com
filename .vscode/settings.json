@@ -1,0 +1,46 @@
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tailwindCSS.classAttributes": [
+    ".*class*",
+    "class:list",
+    "className",
+    ".*Class"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    "(?:wrapperProps)\\s*=\\s*\\{\\{\\s*class:\\s*['\"]([^'\"]+)['\"]\\s*\\}\\}"
+  ],
+  "editor.formatOnSave": true,
+  "editor.autoClosingQuotes": "always",
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#10ead1b1",
+    "titleBar.activeBackground": "#10ead1b1",
+    "titleBar.activeForeground": "#000000",
+    "icon.foreground": "#e11098",
+    "symbolIcon.colorForeground": "#EBC49F",
+    "icon.colorForeground": "#ff0000",
+    "activityBar.inactiveForeground": "#524747"
+  },
+
+  "editor.guides.bracketPairs": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
+}
