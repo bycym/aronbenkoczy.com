@@ -36,6 +36,7 @@
     "activityBar.inactiveForeground": "#524747"
   },
 
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.guides.bracketPairs": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
