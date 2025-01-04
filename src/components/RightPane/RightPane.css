@@ -1,0 +1,15 @@
+.right-pane-root {
+  align-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex: 1 0 0px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 12px;
+  height: min-content;
+  justify-content: center;
+  overflow: visible;
+  padding: 12px 0;
+  position: relative;
+  width: 1px;
+}

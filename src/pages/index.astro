@@ -1,36 +1,47 @@
 ---
 // Component Imports
-import Counter from '../components/Counter';
+import LastFm from '../components/LastFm/LastFm'
+import LeftPane from '../components/LeftPane/LeftPane'
+import RightPane from '../components/RightPane/RightPane'
 const someProps = {
-	count: 0,
-};
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+  count: 0
+}
+import '../styles/index.css'
+import '../styles/global.css'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
-			}
-			body {
-				padding: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<Counter {...someProps} client:visible>
-				<h1>Hello, React!</h1>
-			</Counter>
-		</main>
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <!-- <style>
+      html,
+      body {
+        font-family: system-ui;
+        margin: 0;
+      }
+      body {
+        padding: 2rem;
+      }
+    </style> -->
+  </head>
+  <body>
+    <main>
+      <div class='flex-parent-element'>
+        <div class='flex-child-element magenta'>
+          <LeftPane />
+        </div>
+        <div class='flex-child-element green'>
+          <RightPane />
+          <div>
+            <LastFm {...someProps} client:visible>
+              <h1>Hello, React!</h1>
+            </LastFm>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

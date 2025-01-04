@@ -1,0 +1,18 @@
+.left-pane-root {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex: 1 0 0px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0px;
+  height: 100vh;
+  justify-content: flex-start;
+  overflow: visible;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  width: 1px;
+  will-change: transform;
+  z-index: 1;
+}
