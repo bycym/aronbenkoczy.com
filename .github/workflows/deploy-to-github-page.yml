@@ -35,13 +35,12 @@ jobs:
         run: pnpm install
       - name: Build
         shell: 'bash'
-        working-directory: ${{ inputs.path }}
         run: node node_modules/astro/astro.js "build"
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '${{ inputs.path }}/dist/'
+          path: 'dist/'
 
   deploy:
     needs: build
