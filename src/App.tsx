@@ -279,6 +279,7 @@ const contactGroups: ContactGroup[] = [
     title: "Elsewhere",
     description: "Find releases, games, and social presence.",
     links: [
+      { label: "Github", href: "https://github.com/bycym" },
       { label: "Linktree", href: "https://linktr.ee/bycym" },
       { label: "itch.io", href: "https://bycym.itch.io/" },
       { label: "Instagram", href: "https://www.instagram.com/before.you.close.your.mind/" },
