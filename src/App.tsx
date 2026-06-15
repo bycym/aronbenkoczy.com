@@ -1,4 +1,6 @@
+import { startTransition, useEffect, useState } from "react";
 import heroAvatar from "../asset/bg.jpg";
+import heroAvatarMobile from "../asset/bg-mobile.jpg";
 
 type ExperienceCard = {
   role: string;
@@ -288,6 +290,38 @@ const contactGroups: ContactGroup[] = [
 ];
 
 export default function App() {
+  const [loadedAlbumIds, setLoadedAlbumIds] = useState<number[]>([]);
+
+  useEffect(() => {
+    const desktopMediaQuery = window.matchMedia("(min-width: 981px)");
+
+    const syncLoadedAlbums = (matchesDesktop: boolean) => {
+      startTransition(() => {
+        setLoadedAlbumIds(matchesDesktop ? bandcampAlbums.map((album) => album.albumId) : []);
+      });
+    };
+
+    syncLoadedAlbums(desktopMediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      syncLoadedAlbums(event.matches);
+    };
+
+    desktopMediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      desktopMediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  const loadAlbumPlayer = (albumId: number) => {
+    startTransition(() => {
+      setLoadedAlbumIds((currentIds) =>
+        currentIds.includes(albumId) ? currentIds : [...currentIds, albumId],
+      );
+    });
+  };
+
   return (
     <div className="app-shell">
       <header className="site-hero" id="start">
@@ -312,11 +346,17 @@ export default function App() {
         <aside className="hero-panel" aria-label="Quick links and highlights">
           <div className="hero-art-frame hero-avatar-card">
             <div className="hero-avatar-image-wrap">
-              <img
-                src={heroAvatar}
-                alt="Aron Benkoczy standing outdoors below a rocky hillside."
-                className="hero-avatar-image"
-              />
+              <picture>
+                <source media="(max-width: 640px)" srcSet={heroAvatarMobile} />
+                <img
+                  src={heroAvatar}
+                  alt="Aron Benkoczy standing outdoors below a rocky hillside."
+                  className="hero-avatar-image"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+              </picture>
             </div>
           </div>
           {/* <div className="hero-panel-card">
@@ -459,17 +499,31 @@ export default function App() {
                     Open on Bandcamp
                   </a>
                 </div>
-                <iframe
-                  title={`Bandcamp player for ${album.title}`}
-                  className="bandcamp-embed"
-                  style={{ border: 0, width: "400px", height: "120px" }}
-                  src={`https://bandcamp.com/EmbeddedPlayer/album=${album.albumId}/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/artwork=small/transparent=true/`}
-                  seamless
-                >
-                  <a href={album.url}>
-                    {album.title} by Before You Close Your Mind
-                  </a>
-                </iframe>
+                {loadedAlbumIds.includes(album.albumId) ? (
+                  <iframe
+                    title={`Bandcamp player for ${album.title}`}
+                    className="bandcamp-embed"
+                    style={{ border: 0, width: "400px", height: "120px" }}
+                    src={`https://bandcamp.com/EmbeddedPlayer/album=${album.albumId}/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/artwork=small/transparent=true/`}
+                    loading="lazy"
+                    seamless
+                  >
+                    <a href={album.url}>
+                      {album.title} by Before You Close Your Mind
+                    </a>
+                  </iframe>
+                ) : (
+                  <div className="bandcamp-placeholder">
+                    <p>Load the Bandcamp player only when you want to listen.</p>
+                    <button
+                      type="button"
+                      className="player-button"
+                      onClick={() => loadAlbumPlayer(album.albumId)}
+                    >
+                      Load player
+                    </button>
+                  </div>
+                )}
               </article>
             ))}
           </div>
