@@ -29,6 +29,8 @@ type GameReference = {
   useCase: string;
   tools: string;
   link: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 type BandcampAlbum = {
@@ -46,6 +48,17 @@ type ContactGroup = {
   title: string;
   description: string;
   links: ContactLink[];
+};
+
+type ProjectCard = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  imageSrc?: string;
+  imageAlt?: string;
+  ctaLabel: string;
+  ctaHref: string;
 };
 
 const bandcampAlbums: BandcampAlbum[] = [
@@ -211,6 +224,18 @@ const softwareHighlights: SoftwareHighlight[] = [
 ];
 
 const gameReferences: GameReference[] = [
+    {
+    title: "Lina: Witches of the Moon",
+    subtitle: "itch.io game",
+    type: "Game audio",
+    role: "Audio by me, made with Pico-8 tracker",
+    mood: "Chiptune, magical, game-ready",
+    useCase: "Playable game audio, retro atmosphere, character-driven scenes",
+    tools: "Pico-8 tracker",
+    link: "https://achie.itch.io/lina-witches-of-the-moon",
+    imageSrc: "https://img.itch.zone/aW1nLzEwMzMwMDkxLnBuZw==/original/NcAiyM.png",
+    imageAlt: "Screenshot from Lina: Witches of the Moon.",
+  },
   {
     title: "Runaway",
     subtitle: "OST Composing Jam #4",
@@ -220,16 +245,7 @@ const gameReferences: GameReference[] = [
     useCase: "Endless runner, action sequence, trailer loop",
     tools: "Polyend Tracker + Ableton Live",
     link: "https://bycym.itch.io/ost-composing-jam-4-runaway",
-  },
-  {
-    title: "Lina: Witches of the Moon",
-    subtitle: "itch.io game",
-    type: "Game audio",
-    role: "Audio by me, made with Pico-8 tracker",
-    mood: "Chiptune, magical, game-ready",
-    useCase: "Playable game audio, retro atmosphere, character-driven scenes",
-    tools: "Pico-8 tracker",
-    link: "https://achie.itch.io/lina-witches-of-the-moon",
+    imageSrc: "https://img.itch.zone/aW1hZ2UvMTYxNjUwNi85NDYzNjUxLnBuZw==/original/%2B3KWa4.png",
   },
   {
     title: "Mjœdŏnland",
@@ -240,6 +256,7 @@ const gameReferences: GameReference[] = [
     useCase: "Exploration, surreal narrative, strange ambience",
     tools: "Unity",
     link: "https://bycym.itch.io/mjdnland",
+    imageSrc: "https://img.itch.zone/aW1hZ2UvNTkxOTUwLzMxMjk3NzgucG5n/794x1000/5NJJeW.png",
   },
   {
     title: "Valhalla is near",
@@ -249,6 +266,7 @@ const gameReferences: GameReference[] = [
     mood: "Mythological, retro, couch-fight energy",
     useCase: "Combat, local multiplayer, retro action",
     tools: "LÖVE",
+    imageSrc: "https://img.itch.zone/aW1hZ2UvMTUwNDkyLzY4OTIxNC5wbmc=/794x1000/mEF8rG.png",
     link: "https://bycym.itch.io/valhalla-is-near",
   },
 ];
@@ -286,6 +304,100 @@ const contactGroups: ContactGroup[] = [
       { label: "itch.io", href: "https://bycym.itch.io/" },
       { label: "Instagram", href: "https://www.instagram.com/before.you.close.your.mind/" },
     ],
+  },
+];
+
+const projectCards: ProjectCard[] = [
+  {
+    eyebrow: "Open source",
+    title: "BitBar Jira Client",
+    description:
+      "Small macOS menu bar utility for checking Jira notifications without keeping the full Jira tab open all day.",
+    bullets: [
+      "Pulls Jira issue activity into a lightweight desktop-friendly view.",
+      "Able to check the current assigned ticket.",
+      "Check all the assigned tickets",
+      "Able to click on it for quick access",
+    ],
+    imageSrc:
+      "https://raw.githubusercontent.com/bycym/bitbar_jira_client/master/jira-noti.png",
+    imageAlt: "Screenshot of BitBar Jira Client menu bar notification UI.",
+    ctaLabel: "See GitHub repo",
+    ctaHref: "https://github.com/bycym/bitbar_jira_client",
+  },
+  {
+    eyebrow: "Indie making",
+    title: "Timestamp Clock",
+    description:
+      "Tiny visual clock project for timestamps.",
+    bullets: [
+      "Quick playful timestamp adjust",
+    ],
+    imageSrc: "https://raw.githubusercontent.com/bycym/timestamp-clock/main/image.png",
+    imageAlt: "Screenshot of Timestamp Clock interface.",
+    ctaLabel: "See GitHub repo",
+    ctaHref: "https://github.com/bycym/timestamp-clock",
+  },
+  {
+    eyebrow: "Utility",
+    title: "hun-dic-macos",
+    description:
+      "macOS-focused Hungarian dictionary helper project.",
+    bullets: [
+      "Support windows like hungarian layout on macos.",
+    ],
+    ctaLabel: "See GitHub repo",
+    ctaHref: "https://github.com/bycym/hun-dic-macos",
+    imageSrc: "https://raw.githubusercontent.com/bycym/hun-dic-macos/main/screenshot.png",
+    imageAlt: "Screenshot of hun-dic-macos.",
+  },
+  {
+    eyebrow: "Workflow",
+    title: "xbar-plugins",
+    description:
+      "Collection of xbar plugins.",
+    bullets: [
+      "Telex RSS feed ",
+      "Gitlab MR",
+      "Github PR",
+      "Met.hu radar",
+      "Headphone battery and remaining battery",
+    ],
+    ctaLabel: "See GitHub repo",
+    ctaHref: "https://github.com/bycym/xbar-plugins",
+    imageSrc: "https://raw.githubusercontent.com/bycym/xbar-plugins/main/met-radar.png",
+    imageAlt: "Screenshot of xbar-plugins weather radar plugin.",
+  },
+  {
+    eyebrow: "Music tech",
+    title: "midi-tools",
+    description:
+    "Set of MIDI-related utilities built around music-making workflows.",
+    bullets: [
+      "Script to create a local midi proxy.",
+      "A simple midi tool to send midi notes to plugin (for example Vital)",
+    ],
+    ctaLabel: "See GitHub repo",
+    ctaHref: "https://github.com/bycym/midi-tools",
+    imageSrc: "https://raw.githubusercontent.com/bycym/midi-tools/main/doc/image-1.png",
+    imageAlt: "Screenshot of midi-tools.",
+  },
+  {
+    eyebrow: "Experiment",
+    title: "Interrogator",
+    description:
+    "A simple tool to learn english words.",
+    bullets: [
+      "Given a bunch of words like `cat, kitty, puss = cica, macska`.",
+      "Going through them, and do a question answer style flow.",
+      "Check some statistics after a session.",
+      "Be able to ask only the failed words.",
+      "Works under windows, macos and linux.",
+    ],
+    imageSrc: "https://raw.githubusercontent.com/bycym/Interrogator/master/screenshot.png",
+    imageAlt: "Screenshot of Interrogator.",
+    ctaLabel: "See GitHub repo",
+    ctaHref: "https://github.com/bycym/Interrogator",
   },
 ];
 
@@ -340,6 +452,9 @@ export default function App() {
             <a href="#music" className="btn btn-secondary">
               Explore Music / Game Audio
             </a>
+            <a href="#projects" className="btn btn-ghost">
+              Explore Projects
+            </a>
           </div>
         </div>
 
@@ -369,7 +484,10 @@ export default function App() {
           </div> */}
           <div className="hero-panel-card hero-panel-accent">
             <p className="panel-label">Current focus</p>
-            <p>Python, AWS, event-driven systems, and audio identities for games.</p>
+            <p>To enjoy every second of being a dad</p>
+            <p>Python, AWS, event-driven systems</p>
+            <p>Releasing new Metal/Trip-hop albums</p>
+            <p>Audio for Indie games</p>
           </div>
           <div className="hero-panel-card">
             <p className="panel-label">Contact</p>
@@ -400,17 +518,17 @@ export default function App() {
             </p>
           </div>
 
-          <div className="software-highlight-grid">
+          <div className="horizontal-scroll-row software-highlight-row">
             {softwareHighlights.map((item) => (
-              <article key={item.label} className="software-highlight-card">
+              <article key={item.label} className="software-highlight-card horizontal-card">
                 <p className="software-highlight-value">{item.value}</p>
                 <p className="software-highlight-label">{item.label}</p>
               </article>
             ))}
           </div>
 
-          <div className="cv-summary-grid">
-            <article className="info-card">
+          <div className="horizontal-scroll-row summary-row">
+            <article className="info-card horizontal-card">
               <p className="panel-label">Professional Summary</p>
               <h3>What I do best</h3>
               <ul className="bullet-list bullet-list-tight">
@@ -420,7 +538,7 @@ export default function App() {
               </ul>
             </article>
 
-            <article className="info-card">
+            <article className="info-card horizontal-card">
               <p className="panel-label">Core Skills</p>
               <h3>Stack snapshot</h3>
               <div className="skill-stack">
@@ -441,9 +559,12 @@ export default function App() {
             
           </div>
 
-          <div className="timeline-grid">
+          <div className="horizontal-scroll-row timeline-row">
             {experienceCards.map((experience) => (
-              <article key={`${experience.company}-${experience.role}`} className="timeline-card">
+              <article
+                key={`${experience.company}-${experience.role}`}
+                className="timeline-card horizontal-card"
+              >
                 <div className="timeline-header">
                   <div>
                     <p className="timeline-meta">{experience.period}</p>
@@ -481,18 +602,19 @@ export default function App() {
               </p>
             </article>
             <article className="section-split-body">
-              <h3>What this section shows</h3>
+              <h3>Discography</h3>
               <ul className="bullet-list">
-                <li>Game references and audio direction work</li>
-                <li>Selected Bandcamp releases and discography</li>
-                <li>Atmospheric electronic identity without a reel block</li>
+                <li>Albums, EPs, Singles</li>
               </ul>
             </article>
           </div>
 
-          <div className="bandcamp-grid" aria-label="Bandcamp discography embeds">
+          <div
+            className="horizontal-scroll-row bandcamp-row"
+            aria-label="Bandcamp discography embeds"
+          >
             {bandcampAlbums.map((album) => (
-              <article className="bandcamp-card" key={album.albumId}>
+              <article className="bandcamp-card horizontal-card" key={album.albumId}>
                 <div className="bandcamp-card-header">
                   <h4>{album.title}</h4>
                   <a href={album.url} target="_blank" rel="noreferrer" className="inline-link">
@@ -503,7 +625,7 @@ export default function App() {
                   <iframe
                     title={`Bandcamp player for ${album.title}`}
                     className="bandcamp-embed"
-                    style={{ border: 0, width: "400px", height: "120px" }}
+                    style={{ border: 0, width: "100%", height: "120px" }}
                     src={`https://bandcamp.com/EmbeddedPlayer/album=${album.albumId}/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/artwork=small/transparent=true/`}
                     loading="lazy"
                     seamless
@@ -531,14 +653,24 @@ export default function App() {
           <div className="section-intro music-followup">
             <h3>Game showcase</h3>
             <p>
-              Selected references that show how the audio and atmosphere land
-              inside games and interactive work.
+              Audio and atmosphere inside games.
             </p>
           </div>
 
-          <div className="card-grid music-grid">
+          <div className="horizontal-scroll-row music-project-row">
             {gameReferences.map((game) => (
-              <article key={game.title} className="save-card">
+              <article key={game.title} className="save-card horizontal-card">
+                {game.imageSrc ? (
+                  <div className="project-card-image-wrap game-card-image-wrap">
+                    <img
+                      src={game.imageSrc}
+                      alt={game.imageAlt ?? `${game.title} screenshot`}
+                      className="project-card-image game-card-image"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ) : null}
                 <h3>{game.title}</h3>
                 <p className="subtitle">{game.subtitle}</p>
                 <dl>
@@ -571,17 +703,72 @@ export default function App() {
           </div>
         </section>
 
+        <section className="section section-projects" id="projects">
+          <p className="section-label">03 / Projects</p>
+          <div className="section-split">
+            <article className="section-split-heading">
+              <p className="panel-label">Not client work</p>
+              <h2>Misc projects.</h2>
+              <p>
+                Open source, side builds, and hobby rabbit holes.
+              </p>
+            </article>
+            <article className="section-split-body">
+              <h3>What belongs here</h3>
+              <ul className="bullet-list">
+                <li>Open source experiments and workflow tooling</li>
+                <li>Game prototypes and interactive side ideas</li>
+                <li>Personal systems that connect code and creative practice</li>
+              </ul>
+            </article>
+          </div>
+
+          <div className="horizontal-scroll-row project-row">
+            {projectCards.map((project) => (
+              <article key={project.title} className="project-card horizontal-card">
+                {project.imageSrc ? (
+                  <div className="project-card-image-wrap">
+                    <img
+                      src={project.imageSrc}
+                      alt={project.imageAlt ?? `${project.title} screenshot`}
+                      className="project-card-image"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ) : null}
+                <p className="panel-label">{project.eyebrow}</p>
+                <h3>{project.title}</h3>
+                <p className="project-card-copy">{project.description}</p>
+                <ul className="bullet-list">
+                  {project.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+                <a
+                  href={project.ctaHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-link project-card-link"
+                >
+                  {project.ctaLabel}
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section section-contact" id="contact">
-          <p className="section-label">03 / Contact</p>
+          <p className="section-label">04 / Contact</p>
           <div className="section-intro contact-intro">
             <h3>Find Before You Close Your Mind across streaming, social, and game platforms.</h3>
             <p>
               Pick a platform, jump into releases, or explore game-related work from one place.
             </p>
           </div>
-          <div className="contact-grid">
+          <div className="horizontal-scroll-row contact-row">
             {contactGroups.map((group) => (
-              <article key={group.title} className="contact-card">
+              <article key={group.title} className="contact-card horizontal-card">
                 <p className="panel-label">{group.title}</p>
                 <p className="contact-card-copy">{group.description}</p>
                 <div className="contact-links contact-links-minimal">
